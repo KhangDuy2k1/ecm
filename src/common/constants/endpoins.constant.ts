@@ -2,6 +2,7 @@ export enum Endpoins {
   REGISTER = 'register',
   LOGIN = 'login',
   ADD_TO_CART = 'add-to-cart/:id',
+  GET_ALL_PRODUCT_CART = 'all-cart',
   ADD_PRODUCT = 'add-product',
   GET_ALL_PRODUCT = 'all-products',
   UPDATE_PRODUCT = 'udpate-product/:id',

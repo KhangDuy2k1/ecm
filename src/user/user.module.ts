@@ -6,6 +6,7 @@ import { UserRepository } from './user.repository';
 import { UserService } from './user.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtHelper } from 'src/common/helpers/jwt.helper';
+import { ProductModule } from 'src/product/product.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { JwtHelper } from 'src/common/helpers/jwt.helper';
         expiresIn: '1h',
       },
     }),
+    ProductModule
   ],
   controllers: [UserController],
   providers: [UserRepository, UserService, JwtHelper],

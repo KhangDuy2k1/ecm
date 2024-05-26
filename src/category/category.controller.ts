@@ -55,7 +55,7 @@ export class CategoryController {
     res.json({
       success: true,
       mes: 'Lấy all product thành công',
-      allProducts: await this.categoryService.findAll(),
+      allCategories: await this.categoryService.findAll(),
     });
   }
 }

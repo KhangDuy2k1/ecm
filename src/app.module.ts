@@ -39,6 +39,7 @@ export class AppModule implements NestModule {
       .forRoutes(
         `user/${Endpoins.ADD_TO_CART}`,
         `user/${Endpoins.ADD_TO_CART}`,
+        `user/${Endpoins.GET_ALL_PRODUCT_CART}`
       );
   }
 }

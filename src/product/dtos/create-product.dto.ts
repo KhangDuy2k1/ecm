@@ -9,6 +9,8 @@ export class CreateProductDto {
   @IsNotEmpty()
   price: number;
   @IsString()
+  desc: string;
+  @IsString()
   @IsNotEmpty()
   img: string;
   @IsMongoId()

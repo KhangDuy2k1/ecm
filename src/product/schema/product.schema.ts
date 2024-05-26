@@ -8,6 +8,8 @@ export class Product extends Document {
   @Prop()
   price: number;
   @Prop()
+  desc: string;
+  @Prop()
   img: string;
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Category' })
   id_category: Id;
