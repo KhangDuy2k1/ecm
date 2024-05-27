@@ -18,7 +18,7 @@ import { ProductModule } from 'src/product/product.module';
         expiresIn: '1h',
       },
     }),
-    ProductModule
+    ProductModule,
   ],
   controllers: [UserController],
   providers: [UserRepository, UserService, JwtHelper],

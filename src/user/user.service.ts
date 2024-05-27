@@ -36,25 +36,27 @@ export class UserService extends BaseService<IUser, UserRepository> {
       accessToken: await this.jwtHelper.signToken({ id: user['_id'] }),
     };
   }
- 
+
   async addToCart(user: IUser, id_product: Id): Promise<any> {
     const checkProductInCart: boolean = this.checkProductInCart(
       id_product,
       user.cart,
     );
-    if (checkProductInCart){
+    if (checkProductInCart) {
       throw new ConflictException('đã thêm vào giỏ hàng trước đó');
     }
     const newCart: Id[] = this.addToNewCart(user.cart, id_product);
-    const id: Id = user['_id'];      
+    const id: Id = user['_id'];
     await this.userRepository.update(id, { cart: newCart });
   }
 
-   async getAllCart(list_id: any[]){
-      return Promise.all(list_id.map((id: any) => {
+  async getAllCart(list_id: any[]) {
+    return Promise.all(
+      list_id.map((id: any) => {
         return this.productRepository.findById(id);
-      }))
-   }
+      }),
+    );
+  }
 
   private checkProductInCart(id_product: Id, cart: Id[]): boolean {
     return cart.includes(id_product);

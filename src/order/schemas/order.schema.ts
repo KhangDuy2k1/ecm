@@ -1,10 +1,22 @@
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Types } from 'mongoose';
-type Id = Types.ObjectId;
+import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+
 @Schema({ timestamps: true })
 export class Order extends Document {
-  id_user: Id;
-  id_product: Id;
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })
+  id_user: MongooseSchema.Types.ObjectId;
+
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Product' })
+  id_product: MongooseSchema.Types.ObjectId;
+
+  @Prop()
+  address: string;
+
+  @Prop()
+  phonenumber: string;
+
+  @Prop()
   quantity: number;
 }
+
 export const OrderSchema = SchemaFactory.createForClass(Order);

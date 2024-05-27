@@ -63,13 +63,13 @@ export class UserController {
   @Get(Endpoins.GET_ALL_PRODUCT_CART)
   @HttpCode(HttpStatus.OK)
   async getAllCart(@Req() req: Request, @Res() res: Response): Promise<any> {
-    const user = req["user"];
+    const user = req['user'];
     console.log(user);
-     const resp = { 
-        success: true,
-        mes: "lấy thành công",
-        allCart: await this.userService.getAllCart(user.cart)
-     }
-     res.json(resp);
+    const resp = {
+      success: true,
+      mes: 'lấy thành công',
+      allCart: await this.userService.getAllCart(user.cart),
+    };
+    res.json(resp);
   }
 }

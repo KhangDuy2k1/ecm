@@ -10,7 +10,8 @@ export class OrderRepository implements Repository<IOrder> {
   constructor(@InjectModel(Order.name) private orderModel: Model<Order>) {}
   async create(data: any): Promise<void> {
     try {
-      await this.orderModel.create(data);
+      const model = new this.orderModel(data);
+      await model.save();
     } catch (error) {
       throw new ServerErrorException('lỗi server');
     }
@@ -46,6 +47,15 @@ export class OrderRepository implements Repository<IOrder> {
   async findById(id: Types.ObjectId): Promise<IOrder> {
     try {
       return await this.orderModel.findById(id);
+    } catch (error) {
+      throw new ServerErrorException('lỗi server');
+    }
+  }
+  async finfAllOrder(id_user: any) {
+    try {
+      return await this.orderModel
+        .find({ id_user: id_user })
+        .populate('id_product');
     } catch (error) {
       throw new ServerErrorException('lỗi server');
     }

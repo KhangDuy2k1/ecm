@@ -10,4 +10,7 @@ export enum Endpoins {
   ADD_CATEGORY = 'add-category',
   GET_ALL_CATEGORY = 'all-categories',
   GET_PRODUCT_BY_ID = 'products-by-id/:id',
+  GET_PRODUCT_ID = 'get-product/:id',
+  ORDER = 'order',
+  GET_ALL_ORDER = 'all-orders-me',
 }

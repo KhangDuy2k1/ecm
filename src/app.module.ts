@@ -6,6 +6,7 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
 import { Endpoins } from './common/constants/endpoins.constant';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
 // import { UserService } from './user/user.service';
 const url: string = process.env.DB_URI;
 @Module({
@@ -28,6 +29,7 @@ const url: string = process.env.DB_URI;
     UserModule,
     CategoryModule,
     ProductModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],
@@ -39,7 +41,9 @@ export class AppModule implements NestModule {
       .forRoutes(
         `user/${Endpoins.ADD_TO_CART}`,
         `user/${Endpoins.ADD_TO_CART}`,
-        `user/${Endpoins.GET_ALL_PRODUCT_CART}`
+        `user/${Endpoins.GET_ALL_PRODUCT_CART}`,
+        `order/${Endpoins.ORDER}`,
+        `order/${Endpoins.GET_ALL_ORDER}`,
       );
   }
 }

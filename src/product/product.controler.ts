@@ -33,6 +33,17 @@ export class ProductController {
     });
   }
 
+  @Get(Endpoins.GET_PRODUCT_ID)
+  @HttpCode(HttpStatus.OK)
+  async getProductById(@Param('id') id: any, @Res() res: Response) {
+    const response = {
+      success: true,
+      mes: 'lấy thành công',
+      product: await this.productService.findById(id),
+    };
+    res.json(response);
+  }
+
   @Get(Endpoins.GET_ALL_PRODUCT)
   @HttpCode(HttpStatus.OK)
   async getAllProduct(@Res() res: Response): Promise<void> {
